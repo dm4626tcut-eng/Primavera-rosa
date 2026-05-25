@@ -284,23 +284,23 @@ export default function Gallery() {
 
   // States for dynamic visualization metrics
   const [views, setViews] = useState(0);
-  const [gatoLikes, setGatoLikes] = useState(1);
-  const [grinchLikes, setGrinchLikes] = useState(1);
-  const [gatoLlaveroLikes, setGatoLlaveroLikes] = useState(1);
-  const [mafaldaLikes, setMafaldaLikes] = useState(1);
-  const [forkyLikes, setForkyLikes] = useState(1);
-  const [harryPotterLikes, setHarryPotterLikes] = useState(1);
-  const [chapulinLikes, setChapulinLikes] = useState(1);
-  const [perryLikes, setPerryLikes] = useState(1);
-  const [mickeyMinnieLikes, setMickeyMinnieLikes] = useState(1);
-  const [minnieLikes, setMinnieLikes] = useState(1);
-  const [llamaGafasLikes, setLlamaGafasLikes] = useState(1);
-  const [pedroPicapiedraLikes, setPedroPicapiedraLikes] = useState(1);
-  const [patricioEstrellaLikes, setPatricioEstrellaLikes] = useState(1);
-  const [booLikes, setBooLikes] = useState(1);
-  const [sullivanMikeLikes, setSullivanMikeLikes] = useState(1);
-  const [snoopyLikes, setSnoopyLikes] = useState(1);
-  const [grinchOrnLikes, setGrinchOrnLikes] = useState(1);
+  const [gatoLikes, setGatoLikes] = useState(0);
+  const [grinchLikes, setGrinchLikes] = useState(0);
+  const [gatoLlaveroLikes, setGatoLlaveroLikes] = useState(0);
+  const [mafaldaLikes, setMafaldaLikes] = useState(0);
+  const [forkyLikes, setForkyLikes] = useState(0);
+  const [harryPotterLikes, setHarryPotterLikes] = useState(0);
+  const [chapulinLikes, setChapulinLikes] = useState(0);
+  const [perryLikes, setPerryLikes] = useState(0);
+  const [mickeyMinnieLikes, setMickeyMinnieLikes] = useState(0);
+  const [minnieLikes, setMinnieLikes] = useState(0);
+  const [llamaGafasLikes, setLlamaGafasLikes] = useState(0);
+  const [pedroPicapiedraLikes, setPedroPicapiedraLikes] = useState(0);
+  const [patricioEstrellaLikes, setPatricioEstrellaLikes] = useState(0);
+  const [booLikes, setBooLikes] = useState(0);
+  const [sullivanMikeLikes, setSullivanMikeLikes] = useState(0);
+  const [snoopyLikes, setSnoopyLikes] = useState(0);
+  const [grinchOrnLikes, setGrinchOrnLikes] = useState(0);
   const [gatoClicks, setGatoClicks] = useState(1);
   const [grinchClicks, setGrinchClicks] = useState(1);
   const [gatoLlaveroClicks, setGatoLlaveroClicks] = useState(1);
@@ -345,41 +345,55 @@ export default function Gallery() {
     localStorage.setItem("gallery_total_views", newViews.toString());
     setViews(newViews);
 
+    // One-time reset to 0 as requested by owner
+    if (localStorage.getItem("gallery_likes_reset_v3") !== "true") {
+      const keys = [
+        "gallery_gato_likes", "gallery_grinch_likes", "gallery_gato_llavero_likes",
+        "gallery_mafalda_likes", "gallery_forky_likes", "gallery_harry_potter_likes",
+        "gallery_chapulin_likes", "gallery_perry_likes", "gallery_mickey_minnie_likes",
+        "gallery_minnie_likes", "gallery_llama_gafas_likes", "gallery_pedro_picapiedra_likes",
+        "gallery_patricio_estrella_likes", "gallery_boo_likes", "gallery_sullivan_mike_likes",
+        "gallery_snoopy_likes", "gallery_grinch_orn_likes"
+      ];
+      keys.forEach(k => localStorage.setItem(k, "0"));
+      localStorage.setItem("gallery_likes_reset_v3", "true");
+    }
+
     // Likes Loading
     const localGatoLikes = localStorage.getItem("gallery_gato_likes");
-    setGatoLikes(localGatoLikes ? parseInt(localGatoLikes, 10) : 84);
+    setGatoLikes(localGatoLikes ? parseInt(localGatoLikes, 10) : 0);
     const localGrinchLikes = localStorage.getItem("gallery_grinch_likes");
-    setGrinchLikes(localGrinchLikes ? parseInt(localGrinchLikes, 10) : 71);
+    setGrinchLikes(localGrinchLikes ? parseInt(localGrinchLikes, 10) : 0);
     const localGatoLlaveroLikes = localStorage.getItem("gallery_gato_llavero_likes");
-    setGatoLlaveroLikes(localGatoLlaveroLikes ? parseInt(localGatoLlaveroLikes, 10) : 53);
+    setGatoLlaveroLikes(localGatoLlaveroLikes ? parseInt(localGatoLlaveroLikes, 10) : 0);
     const localMafaldaLikes = localStorage.getItem("gallery_mafalda_likes");
-    setMafaldaLikes(localMafaldaLikes ? parseInt(localMafaldaLikes, 10) : 64);
+    setMafaldaLikes(localMafaldaLikes ? parseInt(localMafaldaLikes, 10) : 0);
     const localForkyLikes = localStorage.getItem("gallery_forky_likes");
-    setForkyLikes(localForkyLikes ? parseInt(localForkyLikes, 10) : 41);
+    setForkyLikes(localForkyLikes ? parseInt(localForkyLikes, 10) : 0);
     const localHarryPotterLikes = localStorage.getItem("gallery_harry_potter_likes");
-    setHarryPotterLikes(localHarryPotterLikes ? parseInt(localHarryPotterLikes, 10) : 95);
+    setHarryPotterLikes(localHarryPotterLikes ? parseInt(localHarryPotterLikes, 10) : 0);
     const localChapulinLikes = localStorage.getItem("gallery_chapulin_likes");
-    setChapulinLikes(localChapulinLikes ? parseInt(localChapulinLikes, 10) : 78);
+    setChapulinLikes(localChapulinLikes ? parseInt(localChapulinLikes, 10) : 0);
     const localPerryLikes = localStorage.getItem("gallery_perry_likes");
-    setPerryLikes(localPerryLikes ? parseInt(localPerryLikes, 10) : 65);
+    setPerryLikes(localPerryLikes ? parseInt(localPerryLikes, 10) : 0);
     const localMickeyMinnieLikes = localStorage.getItem("gallery_mickey_minnie_likes");
-    setMickeyMinnieLikes(localMickeyMinnieLikes ? parseInt(localMickeyMinnieLikes, 10) : 110); // set nicely popular!
+    setMickeyMinnieLikes(localMickeyMinnieLikes ? parseInt(localMickeyMinnieLikes, 10) : 0); 
     const localMinnieLikes = localStorage.getItem("gallery_minnie_likes");
-    setMinnieLikes(localMinnieLikes ? parseInt(localMinnieLikes, 10) : 135); // Minnie is beautiful!
+    setMinnieLikes(localMinnieLikes ? parseInt(localMinnieLikes, 10) : 0); 
     const localLlamaGafasLikes = localStorage.getItem("gallery_llama_gafas_likes");
-    setLlamaGafasLikes(localLlamaGafasLikes ? parseInt(localLlamaGafasLikes, 10) : 124);
+    setLlamaGafasLikes(localLlamaGafasLikes ? parseInt(localLlamaGafasLikes, 10) : 0);
     const localPedroPicapiedraLikes = localStorage.getItem("gallery_pedro_picapiedra_likes");
-    setPedroPicapiedraLikes(localPedroPicapiedraLikes ? parseInt(localPedroPicapiedraLikes, 10) : 118);
+    setPedroPicapiedraLikes(localPedroPicapiedraLikes ? parseInt(localPedroPicapiedraLikes, 10) : 0);
     const localPatricioEstrellaLikes = localStorage.getItem("gallery_patricio_estrella_likes");
-    setPatricioEstrellaLikes(localPatricioEstrellaLikes ? parseInt(localPatricioEstrellaLikes, 10) : 145);
+    setPatricioEstrellaLikes(localPatricioEstrellaLikes ? parseInt(localPatricioEstrellaLikes, 10) : 0);
     const localBooLikes = localStorage.getItem("gallery_boo_likes");
-    setBooLikes(localBooLikes ? parseInt(localBooLikes, 10) : 162);
+    setBooLikes(localBooLikes ? parseInt(localBooLikes, 10) : 0);
     const localSullivanMikeLikes = localStorage.getItem("gallery_sullivan_mike_likes");
-    setSullivanMikeLikes(localSullivanMikeLikes ? parseInt(localSullivanMikeLikes, 10) : 185);
+    setSullivanMikeLikes(localSullivanMikeLikes ? parseInt(localSullivanMikeLikes, 10) : 0);
     const localSnoopyLikes = localStorage.getItem("gallery_snoopy_likes");
-    setSnoopyLikes(localSnoopyLikes ? parseInt(localSnoopyLikes, 10) : 194);
+    setSnoopyLikes(localSnoopyLikes ? parseInt(localSnoopyLikes, 10) : 0);
     const localGrinchOrnLikes = localStorage.getItem("gallery_grinch_orn_likes");
-    setGrinchOrnLikes(localGrinchOrnLikes ? parseInt(localGrinchOrnLikes, 10) : 205);
+    setGrinchOrnLikes(localGrinchOrnLikes ? parseInt(localGrinchOrnLikes, 10) : 0);
 
     // Clicks/Consultations Loading
     const localGatoClicks = localStorage.getItem("gallery_gato_clicks");
