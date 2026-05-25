@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  /* Colores del Logo Primavera Rosa */
+  --color-brand-pink: #F48FB1;    /* Rosa Primavera */
+  --color-brand-cyan: #80DEEA;    /* Celeste Agua */
+  --color-brand-brown: #6D4C41;   /* Marrón Artesanal */
+  --color-brand-bg: #FFF9FB;      /* Fondo suave rosáceo */
+}
+
